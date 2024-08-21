@@ -1,6 +1,31 @@
-const main = document.querySelector("main");
+const body = document.querySelector('body');
 
-const numPokes = 1000;
+const main = document.querySelector('main');
+const cardsContainer = document.createElement('div');
+
+cardsContainer.classList = "cardsContainer";
+const moreInfos = document.createElement('div');
+
+moreInfos.classList = "moreInfos";
+const closeInfo = document.createElement('div');
+
+closeInfo.classList = "closeInfo";
+closeInfo.textContent = "X";
+moreInfos.appendChild(closeInfo);
+
+closeInfo.addEventListener('click', function() {
+    moreInfos.style.visibility = "hidden";
+    body.style.overflow = "auto";
+});
+
+// document.addEventListener('scroll', function(){
+//     const space = window.innerheight - moreInfos.getBoundingClientRect();
+//     console.log(space);
+
+//     moreInfos.setAttribute("style", `top: ${space}px`);
+// });
+
+const numPokes = 2000;
 
 const fecthPoke = async() => {
     for(let i = 1; i <= numPokes; i++){
@@ -50,7 +75,7 @@ const cardPoke = (poke) => {
     svg.setAttribute("width", "100%");
     svg.setAttribute("height", "100%");
     svg.setAttribute("fill", "none");
-    svg.setAttribute("color", "#ffffff");
+    svg.setAttribute("color", "#e6e9ed");
     svg.setAttribute("stroke", "currentColor");
     svg.setAttribute("stroke-linecap", "round");
     svg.setAttribute("stroke-linejoin", "round");
@@ -153,6 +178,7 @@ const cardPoke = (poke) => {
         types.appendChild(type);
     });
     
+    
     const moreInfo = document.createElement('div');
     moreInfo.classList = "moreInfo";
     const pokeInfo = document.createElement('div');
@@ -187,14 +213,22 @@ const cardPoke = (poke) => {
     card.appendChild(info);
     card.appendChild(photo);
     card.appendChild(types);
-    main.appendChild(card);
+    cardsContainer.appendChild(card);
 
     pokeInfoNameId.appendChild(pokeInfoId);
     pokeInfoNameId.appendChild(pokeInfoDivisor);
     pokeInfoNameId.appendChild(pokeInfoName);
     pokeInfo.appendChild(pokeInfoNameId);
     moreInfo.appendChild(pokeInfo);
-    main.appendChild(moreInfo);
+    moreInfos.appendChild(moreInfo);
+
+    card.addEventListener('click', function() {
+        moreInfos.style.visibility = "visible";
+        body.style.overflow = "hidden";
+    });
 };
+
+main.appendChild(moreInfos);
+main.appendChild(cardsContainer)
 
 fecthPoke();

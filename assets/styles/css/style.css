@@ -1,25 +1,24 @@
-@import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-
 body {
-  background: rgba(161, 0, 0, 0.76);
+  background: #ed5564;
   overflow-x: hidden;
 }
 body nav {
   height: 100px;
   width: 100vw;
   border-bottom: 2px solid rgba(0, 0, 0, 0.3);
-  background: rgb(161, 0, 0);
+  background: #d64d5a;
   display: flex;
   justify-content: center;
   align-items: center;
   position: fixed;
-  z-index: 100;
+  z-index: 1000;
 }
 body nav .search {
   display: flex;
@@ -44,7 +43,7 @@ body nav .search .searchIcon:hover {
   transform: scale(1.1);
   transition: 500ms;
 }
-body main {
+body main .cardsContainer {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -53,14 +52,14 @@ body main {
   gap: 2rem;
   padding-top: 160px;
 }
-body main .card {
+body main .cardsContainer .card {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 250px;
   border-radius: 20px;
 }
-body main .card .info {
+body main .cardsContainer .card .info {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -71,15 +70,15 @@ body main .card .info {
   padding: 0.6rem;
   border-radius: 20px 20px 0px 0px;
 }
-body main .card .info .id, body main .card .info .name {
+body main .cardsContainer .card .info .id, body main .cardsContainer .card .info .name {
   font-family: "Pixelify Sans", sans-serif;
   font-size: 1.3rem;
   font-weight: 1000;
-  color: #ffffff;
+  color: #e6e9ed;
   text-transform: uppercase;
   text-align: center;
 }
-body main .card .photo {
+body main .cardsContainer .card .photo {
   height: 250px;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.2);
@@ -89,34 +88,34 @@ body main .card .photo {
   position: relative;
   cursor: pointer;
 }
-body main .card .photo .photoBg {
+body main .cardsContainer .card .photo .photoBg {
   position: absolute;
   width: 100%;
   height: 100%;
 }
-body main .card .photo .normal {
+body main .cardsContainer .card .photo .normal {
   visibility: visible;
   width: 80%;
   height: 80%;
   position: absolute;
   transition: 500ms;
 }
-body main .card .photo .shiny {
+body main .cardsContainer .card .photo .shiny {
   visibility: hidden;
   width: 80%;
   height: 80%;
   position: absolute;
   transition: 500ms;
 }
-body main .card .photo:hover .normal {
+body main .cardsContainer .card .photo:hover .normal {
   visibility: hidden;
   transition: 500ms;
 }
-body main .card .photo:hover .shiny {
+body main .cardsContainer .card .photo:hover .shiny {
   visibility: visible;
   transition: 500ms;
 }
-body main .card .types {
+body main .cardsContainer .card .types {
   display: flex;
   justify-content: center;
   gap: 0.7;
@@ -126,14 +125,14 @@ body main .card .types {
   padding: 0.6rem;
   gap: 2rem;
 }
-body main .card .types .type {
+body main .cardsContainer .card .types .type {
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 20px;
   transition: 1s;
 }
-body main .card .types .type .typeIcon {
+body main .cardsContainer .card .types .type .typeIcon {
   display: flex;
   align-items: center;
   padding: 0.2rem 0.2rem;
@@ -141,50 +140,81 @@ body main .card .types .type .typeIcon {
   transition: 500ms;
   position: relative;
 }
-body main .card .types .type .typeIcon img {
+body main .cardsContainer .card .types .type .typeIcon img {
   width: 30px;
   height: 30px;
   border-radius: 50%;
   transition: 1s;
 }
-body main .card .types .type .typeIcon .typeName {
+body main .cardsContainer .card .types .type .typeIcon .typeName {
   font-size: 1rem;
   font-weight: 600;
-  color: white;
+  color: #e6e9ed;
   position: absolute;
   transform: translateX(-10%) rotateX(-90deg);
   visibility: hidden;
   transition: 0.1s;
   padding-right: 0.5rem;
 }
-body main .card .types .type .typeIcon:hover {
+body main .cardsContainer .card .types .type .typeIcon:hover {
   transition: 1.5s;
 }
-body main .card .types .type .typeIcon:hover img {
+body main .cardsContainer .card .types .type .typeIcon:hover img {
   transform: rotate(360deg);
   transition: 1.5s;
 }
-body main .card .types .type .typeIcon:hover .typeName {
+body main .cardsContainer .card .types .type .typeIcon:hover .typeName {
   position: relative;
   transform: translateX(0%) rotateX(0deg);
   visibility: visible;
   transition: 1s;
 }
-body main .card:hover .photo > :not(.photoBg) {
+body main .cardsContainer .card:hover .photo > :not(.photoBg) {
   transform: scale(1.1);
   transition: 500ms;
 }
-body main .moreInfo {
-  display: none;
+body main .moreInfos {
   visibility: hidden;
-  width: 90vw;
-  height: 80vh;
+  width: 100%;
+  height: 100%;
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 100;
+  background-color: #ffffff41;
+}
+body main .moreInfos .closeInfo {
+  position: absolute;
+  font-weight: 600;
+  font-size: 1.3rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #d64d5a;
+  color: #e6e9ed;
+  cursor: pointer;
+  transition: .5s;
+  font-family: "Pixelify Sans", sans-serif;
+}
+body main .moreInfos .closeInfo:hover {
+  transform: rotate(360deg);
+  transition: .5s;
+}
+body main .moreInfos .moreInfo {
+  position: absolute;
+  visibility: hidden;
+  width: 90%;
+  height: 80%;
   background-color: black;
   display: flex;
   border-radius: 30px 30px 30px 30px;
 }
-body main .moreInfo .pokeInfo {
+body main .moreInfos .moreInfo .pokeInfo {
   background-color: cyan;
   height: 100%;
   width: 25%;
@@ -192,8 +222,8 @@ body main .moreInfo .pokeInfo {
   flex-direction: column;
   border-radius: 30px 0px 0px 30px;
 }
-body main .moreInfo .pokeInfo .pokeInfoNameId {
-  background-color: rgb(182, 20, 20);
+body main .moreInfos .moreInfo .pokeInfo .pokeInfoNameId {
+  background-color: #b61414;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -202,11 +232,11 @@ body main .moreInfo .pokeInfo .pokeInfoNameId {
   height: 80px;
   border-radius: 30px 0px 0px 0px;
 }
-body main .moreInfo .pokeInfo .pokeInfoNameId .pokeInfoName, body main .moreInfo .pokeInfo .pokeInfoNameId .pokeInfoId {
+body main .moreInfos .moreInfo .pokeInfo .pokeInfoNameId .pokeInfoName, body main .moreInfos .moreInfo .pokeInfo .pokeInfoNameId .pokeInfoId {
   font-family: "Pixelify Sans", sans-serif;
   font-size: 1.8rem;
   font-weight: 1000;
   color: #ffffff;
   text-transform: uppercase;
   text-align: center;
-}/*# sourceMappingURL=style.css.map */
+}
