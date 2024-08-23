@@ -6,25 +6,6 @@ const cardsContainer = document.createElement('div');
 cardsContainer.classList = "cardsContainer";
 const moreInfos = document.createElement('div');
 
-moreInfos.classList = "moreInfos";
-const closeInfo = document.createElement('div');
-
-closeInfo.classList = "closeInfo";
-closeInfo.textContent = "X";
-moreInfos.appendChild(closeInfo);
-
-closeInfo.addEventListener('click', function() {
-    moreInfos.style.visibility = "hidden";
-    body.style.overflow = "auto";
-});
-
-// document.addEventListener('scroll', function(){
-//     const space = window.innerheight - moreInfos.getBoundingClientRect();
-//     console.log(space);
-
-//     moreInfos.setAttribute("style", `top: ${space}px`);
-// });
-
 const numPokes = 2000;
 
 const fecthPoke = async() => {
@@ -94,11 +75,11 @@ const cardPoke = (poke) => {
     const photoSpriteN = document.createElement('img');
     photoSpriteN.classList = "photoSprite";
     photoSpriteN.classList = "normal";
-    photoSpriteN.src = `${poke.sprites.front_default}`;
+    photoSpriteN.src = `${poke.sprites.other.home.front_default}`;
     const photoSpriteS = document.createElement('img');
     photoSpriteS.classList = "photoSprite";
     photoSpriteS.classList = "shiny";
-    photoSpriteS.src = `${poke.sprites.front_shiny}`;
+    photoSpriteS.src = `${poke.sprites.other.home.front_shiny}`;
 
     const types = document.createElement('div');
     types.classList = "types";
@@ -179,29 +160,7 @@ const cardPoke = (poke) => {
     });
     
     
-    const moreInfo = document.createElement('div');
-    moreInfo.classList = "moreInfo";
-    const pokeInfo = document.createElement('div');
-    pokeInfo.classList = "pokeInfo";
-    const pokeInfoNameId = document.createElement('div');
-    pokeInfoNameId.classList = "pokeInfoNameId";
-    const pokeInfoName = document.createElement('div');
-    pokeInfoName.classList = "pokeInfoName";
-    pokeInfoName.textContent = `${poke.name}`;
-    const pokeInfoDivisor = document.createElement('div');
-    pokeInfoDivisor.classList = "pokeInfoName";
-    pokeInfoDivisor.textContent = `-`;
-    const pokeInfoId = document.createElement('div');
-    pokeInfoId.classList = "pokeInfoId";    
-    if(poke.id < 10){
-        pokeInfoId.textContent = `#000${poke.id}`;
-    } else if(poke.id < 100){
-        pokeInfoId.textContent = `#00${poke.id}`;
-    } else if(poke.id < 1000){
-        pokeInfoId.textContent = `#0${poke.id}`;
-    } else{
-        pokeInfoId.textContent = `#${poke.id}`;
-    }
+    
 
     info.appendChild(id);
     info.appendChild(divisor);
@@ -215,16 +174,53 @@ const cardPoke = (poke) => {
     card.appendChild(types);
     cardsContainer.appendChild(card);
 
-    pokeInfoNameId.appendChild(pokeInfoId);
-    pokeInfoNameId.appendChild(pokeInfoDivisor);
-    pokeInfoNameId.appendChild(pokeInfoName);
-    pokeInfo.appendChild(pokeInfoNameId);
-    moreInfo.appendChild(pokeInfo);
-    moreInfos.appendChild(moreInfo);
+    
 
     card.addEventListener('click', function() {
-        moreInfos.style.visibility = "visible";
         body.style.overflow = "hidden";
+
+        moreInfos.classList = "moreInfos";
+        const closeInfo = document.createElement('div');
+
+        closeInfo.classList = "closeInfo";
+        closeInfo.textContent = "X";
+        moreInfos.appendChild(closeInfo);
+
+        closeInfo.addEventListener('click', function() {
+            moreInfos.style.visibility = "hidden";
+            body.style.overflow = "auto";
+        });
+        
+        const moreInfo = document.createElement('div');
+        moreInfo.classList = "moreInfo";
+        const pokeInfo = document.createElement('div');
+        pokeInfo.classList = "pokeInfo";
+        const pokeInfoNameId = document.createElement('div');
+        pokeInfoNameId.classList = "pokeInfoNameId";
+        const pokeInfoName = document.createElement('div');
+        pokeInfoName.classList = "pokeInfoName";
+        pokeInfoName.textContent = `${poke.name}`;
+        const pokeInfoDivisor = document.createElement('div');
+        pokeInfoDivisor.classList = "pokeInfoName";
+        pokeInfoDivisor.textContent = `-`;
+        const pokeInfoId = document.createElement('div');
+        pokeInfoId.classList = "pokeInfoId";    
+        if(poke.id < 10){
+            pokeInfoId.textContent = `#000${poke.id}`;
+        } else if(poke.id < 100){
+            pokeInfoId.textContent = `#00${poke.id}`;
+        } else if(poke.id < 1000){
+            pokeInfoId.textContent = `#0${poke.id}`;
+        } else{
+            pokeInfoId.textContent = `#${poke.id}`;
+        }
+
+        pokeInfoNameId.appendChild(pokeInfoId);
+        pokeInfoNameId.appendChild(pokeInfoDivisor);
+        pokeInfoNameId.appendChild(pokeInfoName);
+        pokeInfo.appendChild(pokeInfoNameId);
+        moreInfo.appendChild(pokeInfo);
+        moreInfos.appendChild(moreInfo);
     });
 };
 

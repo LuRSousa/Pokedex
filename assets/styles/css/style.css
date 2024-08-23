@@ -1,19 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
 body {
-  background: #ed5564;
+  background: rgb(237, 85, 100);
   overflow-x: hidden;
 }
 body nav {
   height: 100px;
   width: 100vw;
   border-bottom: 2px solid rgba(0, 0, 0, 0.3);
-  background: #d64d5a;
+  background: rgb(214, 77, 90);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -95,15 +96,15 @@ body main .cardsContainer .card .photo .photoBg {
 }
 body main .cardsContainer .card .photo .normal {
   visibility: visible;
-  width: 80%;
-  height: 80%;
+  width: 70%;
+  height: 70%;
   position: absolute;
   transition: 500ms;
 }
 body main .cardsContainer .card .photo .shiny {
   visibility: hidden;
-  width: 80%;
-  height: 80%;
+  width: 70%;
+  height: 70%;
   position: absolute;
   transition: 500ms;
 }
@@ -174,19 +175,17 @@ body main .cardsContainer .card:hover .photo > :not(.photoBg) {
   transition: 500ms;
 }
 body main .moreInfos {
-  visibility: hidden;
   width: 100%;
   height: 100%;
-  position: absolute;
+  position: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   z-index: 100;
-  background-color: #ffffff41;
+  background-color: rgba(255, 255, 255, 0.2549019608);
 }
 body main .moreInfos .closeInfo {
-  position: absolute;
   font-weight: 600;
   font-size: 1.3rem;
   width: 40px;
@@ -195,21 +194,19 @@ body main .moreInfos .closeInfo {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #d64d5a;
+  background-color: rgb(214, 77, 90);
   color: #e6e9ed;
   cursor: pointer;
-  transition: .5s;
+  transition: 0.5s;
   font-family: "Pixelify Sans", sans-serif;
 }
 body main .moreInfos .closeInfo:hover {
   transform: rotate(360deg);
-  transition: .5s;
+  transition: 0.5s;
 }
 body main .moreInfos .moreInfo {
-  position: absolute;
-  visibility: hidden;
-  width: 90%;
-  height: 80%;
+  width: 80%;
+  height: 70%;
   background-color: black;
   display: flex;
   border-radius: 30px 30px 30px 30px;
@@ -223,7 +220,7 @@ body main .moreInfos .moreInfo .pokeInfo {
   border-radius: 30px 0px 0px 30px;
 }
 body main .moreInfos .moreInfo .pokeInfo .pokeInfoNameId {
-  background-color: #b61414;
+  background-color: rgb(182, 20, 20);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -239,4 +236,4 @@ body main .moreInfos .moreInfo .pokeInfo .pokeInfoNameId .pokeInfoName, body mai
   color: #ffffff;
   text-transform: uppercase;
   text-align: center;
-}
+}/*# sourceMappingURL=style.css.map */
