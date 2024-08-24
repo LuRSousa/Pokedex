@@ -1,12 +1,15 @@
+//Elementos Principais
 const body = document.querySelector('body');
 
 const main = document.querySelector('main');
-const cardsContainer = document.createElement('div');
 
+const cardsContainer = document.createElement('div');
 cardsContainer.classList = "cardsContainer";
+
 const moreInfos = document.createElement('div');
 
-const numPokes = 2000;
+//Funções API
+const numPokes = 1025;
 
 const fecthPoke = async() => {
     for(let i = 1; i <= numPokes; i++){
@@ -15,15 +18,20 @@ const fecthPoke = async() => {
 };
 
 const getPoke = async(id) => {
-    const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
-
-    const request = await fetch(url);
-
-    const info = await request.json();
-    cardPoke(info);
+    try {
+        const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
+        const request = await fetch(url);
+        if (!request.ok) throw new Error(`Failed to fetch Pokemon with ID: ${id}`);
+        const info = await request.json();
+        cardPoke(info);
+    } catch (error) {
+        console.error(error);
+    }
 };
 
+//Criando Cards
 const cardPoke = (poke) => {
+    //Criando Cards Pequenos
     const card = document.createElement('div');
     card.classList = "card";
 
@@ -159,9 +167,7 @@ const cardPoke = (poke) => {
         types.appendChild(type);
     });
     
-    
-    
-
+    //Aplicando Cards Pequenos
     info.appendChild(id);
     info.appendChild(divisor);
     info.appendChild(name);
@@ -173,10 +179,11 @@ const cardPoke = (poke) => {
     card.appendChild(photo);
     card.appendChild(types);
     cardsContainer.appendChild(card);
-
     
-
+    //Criando Cards Grandes
     card.addEventListener('click', function() {
+        moreInfos.innerHTML = '';
+        
         body.style.overflow = "hidden";
 
         moreInfos.classList = "moreInfos";
@@ -213,17 +220,81 @@ const cardPoke = (poke) => {
             pokeInfoId.textContent = `#0${poke.id}`;
         } else{
             pokeInfoId.textContent = `#${poke.id}`;
-        }
+        };
+        const infoPhoto = document.createElement('div');
+        infoPhoto.classList = "infoPhoto";
+        const infoSvgNS = "http://www.w3.org/2000/svg";
+        const infoSvg = document.createElementNS(infoSvgNS, "svg");
+        infoSvg.setAttribute("width", "100%");
+        infoSvg.setAttribute("height", "100%");
+        infoSvg.setAttribute("fill", "none");
+        infoSvg.setAttribute("color", "#e6e9ed");
+        infoSvg.setAttribute("stroke", "currentColor");
+        infoSvg.setAttribute("stroke-linecap", "round");
+        infoSvg.setAttribute("stroke-linejoin", "round");
+        infoSvg.setAttribute("stroke-width", "1");
+        infoSvg.setAttribute("viewBox", "0 0 24 24");
+        infoSvg.setAttribute("xmlns", infoSvgNS);
+        const infoPath1 = document.createElementNS(infoSvgNS, "path");
+        infoPath1.setAttribute("d", "M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z");
+        const infoPath2 = document.createElementNS(infoSvgNS, "path");
+        infoPath2.setAttribute("d", "M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z");
+        const infoPath3 = document.createElementNS(infoSvgNS, "path");
+        infoPath3.setAttribute("d", "M15 12h6M3 12h6-6Z");
+        infoSvg.appendChild(infoPath1);
+        infoSvg.appendChild(infoPath2);
+        infoSvg.appendChild(infoPath3);
+        const infoSprite = document.createElement('img');
+        infoSprite.classList = "infoSprite";
+        infoSprite.src = `${poke.sprites.other.home.front_default}`;
+        const changeSpriteContainer = document.createElement('div');
+        changeSpriteContainer.classList = "changeSpriteContainer";
+        const btnSprite1 = document.createElement('div');
+        btnSprite1.classList = "btnSprite";
+        btnSprite1.textContent = "Pixel";
+        btnSprite1.addEventListener('click', function(){
+            infoSprite.src = `${poke.sprites.front_default}`;
+        })
+        const btnSprite2 = document.createElement('div');
+        btnSprite2.classList = "btnSprite";
+        btnSprite2.textContent = "3D";
+        btnSprite2.addEventListener('click', function(){
+            infoSprite.src = `${poke.sprites.other.home.front_default}`;
+        })
+        const btnSprite3 = document.createElement('div');
+        btnSprite3.classList = "btnSprite";
+        btnSprite3.textContent = "Desenho";
+        btnSprite3.addEventListener('click', function(){
+            infoSprite.src = `${poke.sprites.other['official-artwork'].front_default}`;
+        })
+        const btnSprite4 = document.createElement('div');
+        btnSprite4.classList = "btnSprite";
+        btnSprite4.textContent = "Animado";
+        btnSprite4.addEventListener('click', function(){
+            infoSprite.src = `${poke.sprites.other.showdown.front_default}`;
+        })
 
+        //Aplicando Cards Grandes
         pokeInfoNameId.appendChild(pokeInfoId);
         pokeInfoNameId.appendChild(pokeInfoDivisor);
         pokeInfoNameId.appendChild(pokeInfoName);
+        changeSpriteContainer.appendChild(btnSprite1);
+        changeSpriteContainer.appendChild(btnSprite2);
+        changeSpriteContainer.appendChild(btnSprite3);
+        changeSpriteContainer.appendChild(btnSprite4);
         pokeInfo.appendChild(pokeInfoNameId);
+        infoPhoto.appendChild(infoSvg);
+        infoPhoto.appendChild(infoSprite);
+        pokeInfo.appendChild(infoPhoto);
+        pokeInfo.appendChild(changeSpriteContainer);
         moreInfo.appendChild(pokeInfo);
         moreInfos.appendChild(moreInfo);
+
+        moreInfos.style.visibility = "visible";
     });
 };
 
+//Aplicando Cards ao Site
 main.appendChild(moreInfos);
 main.appendChild(cardsContainer)
 
