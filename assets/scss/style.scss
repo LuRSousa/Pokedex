@@ -111,32 +111,12 @@ body{
                         height: 100%;
                     }
             
-                    .normal{
+                    .photoSprite{
                         visibility: visible;
-                        width: 70%;
-                        height: 70%;
+                        width: 200px;
+                        height: 200px;
                         position: absolute;
                         transition: 500ms;
-                    }
-            
-                    .shiny{
-                        visibility: hidden;
-                        width: 70%;
-                        height: 70%;
-                        position: absolute;
-                        transition: 500ms;
-                    }
-    
-                    &:hover{
-                        .normal{
-                            visibility: hidden;
-                            transition: 500ms;
-                        }
-                
-                        .shiny{
-                            visibility: visible;
-                            transition: 500ms;
-                        }
                     }
                 }
             
@@ -240,6 +220,7 @@ body{
                 cursor: pointer;
                 transition: 500ms;
                 font-family: "Pixelify Sans", sans-serif;
+                border: 3px solid rgba(0, 0, 0, 0.3);
 
                 &:hover{
                     transform: rotate(360deg);
@@ -250,11 +231,14 @@ body{
             .moreInfo{
                 width: 80%;
                 min-width: 1500px;
+                max-width: 2000px;
                 height: 70%;
                 min-height: 650px;
+                max-height: 1200px;
                 background: rgb(237, 85, 100);
                 display: flex;
                 border-radius: 30px 30px 30px 30px;
+
     
                 .pokeInfo{
                     background-color: rgba(0, 0, 0, 0.2);
@@ -263,6 +247,7 @@ body{
                     display: flex;
                     flex-direction: column;
                     border-radius: 30px 0px 0px 30px;
+                    border: 3px solid rgba(0, 0, 0, 0.3);
     
                     .pokeInfoNameId{
                         background-color: rgba(0, 0, 0, 0.3);
@@ -271,15 +256,14 @@ body{
                         align-items: center;
                         gap: 1rem;
                         width: 100%;
-                        height: 80px;
-                        border-radius: 30px 0px 0px 0px;
+                        height: 13%;
+                        border-radius: 27px 0px 0px 0px;
                         
-    
                         .pokeInfoName, .pokeInfoId{
                             font-family: "Pixelify Sans", sans-serif;
                             font-size: 1.8rem;
                             font-weight: 1000;
-                            color: #ffffff;
+                            color: #e6e9ed;
                             text-transform: uppercase;
                             text-align: center;
                         }
@@ -290,10 +274,11 @@ body{
                         align-items: center;
                         justify-content: center;
                         position: relative;
+                        height: 55%;
 
                         .infoSprite{
-                            width: 200px;
-                            height: 200px;
+                            width: 300px;
+                            height: 300px;
                             position: absolute;
                         }
                     }
@@ -301,7 +286,7 @@ body{
                     .changeSpriteContainer{
                         background-color: rgba(0, 0, 0, 0.2);
                         width: 100%;
-                        height: 35px;
+                        height: 7%;
                         display: flex;
                         justify-content: space-around;
                         align-items: center;
@@ -318,11 +303,158 @@ body{
                             }
                         }
                     }
+
+                    .infoMore{
+                        border-radius: 0px 0px 0px 30px;
+                        width: 100%;
+                        height: 38%;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 0.5rem;
+
+                        .infoMoreValues{
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            gap: 0.9rem;
+                            width: 80%;
+
+                            svg{
+                                height: 40px;
+                                width: 40px;
+                            }
+
+                            .infoMoreValuesText{
+                                font-size: 1.2rem;
+                                font-weight: 600;
+                                color: #e6e9ed;
+                            }
+                        }
+
+                        .infoTypes{
+                            display: flex;
+                            justify-content: space-around;
+                            width: 60%;
+                            padding: 0.6rem;
+                            gap: 2rem;
+                    
+                            .infoType{
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                border-radius: 50px;
+                                transition: 1s;
+                    
+                                .infoTypeIcon{
+                                    display: flex;
+                                    align-items: center;
+                                    padding: 0.2rem 0.2rem;
+                                    gap: 0.2rem;
+                                    transition: 500ms;
+                                    position: relative;
+                    
+                                    img{
+                                        width: 50px;
+                                        height: 50px;
+                                        border-radius: 50%;
+                                        transition: 1s;
+                                    }
+                    
+                                    .infoTypeName{
+                                        font-size: 1.2rem;
+                                        font-weight: 600;
+                                        color: #e6e9ed;
+                                        position: absolute;
+                                        transform: translateX(-10%) rotateX(-90deg);
+                                        visibility: hidden;
+                                        transition: 0.1s;
+                                        padding-right: 1rem;
+                                    }
+            
+                                    &:hover{
+                                        transition: 1.5s;
+                        
+                                        img {
+                                            transform: rotate(360deg);
+                                            transition: 1.5s;
+                                        }
+                            
+                                        .infoTypeName {
+                                            position: relative;
+                                            transform: translateX(0%) rotateX(0deg);
+                                            visibility: visible;
+                                            transition: 1s;
+                                        }
+                                    }
+                                }                    
+                            }
+                        }
+                    }
+                }
+
+                .pokeMore{
+                    width: 75%;
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    border-radius: 0px 30px 30px 0px;
+                    border: 3px solid rgba(0, 0, 0, 0.3);
+                    background-color: rgba(0, 0, 0, 0.2);
+
+                    .moreLineUp{
+                        width: 100%;
+                        height: 65%;
+                        padding-left: 1rem;
+
+                        .moreDescriptionText{
+                            font-size: 1.1rem;
+                            font-weight: 500;
+                            color: #ffffff;
+                        }
+                    }
                 }
             }
+        }  
+    }
+}
+
+
+
+.infoStatus{
+    border-radius: 0px 0px 0px 30px;
+    width: 100%;
+    height: 38%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+
+    .infoStat{
+        display: flex;
+        flex-direction: column;
+        width: 60%;
+        gap: 0.2rem;
+
+        .infoStatName{
+            color: #e6e9ed;
+            font-weight: 600;
         }
 
-        
+        .infoStatBar{
+            width: 100%;
+            height: 20px;
+            border-radius: 20px;
+            border: 2px solid rgba(0, 0, 0, 0.2);
+
+            .infoStatProgress{
+                height: 100%;
+                background-color: rgb(255, 113, 31);
+                border-radius: 30px 0px 0px 30px;
+            }
+        }
     }
 }
 

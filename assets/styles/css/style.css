@@ -99,26 +99,11 @@ body main .cardsContainer .card .photo .photoBg {
   width: 100%;
   height: 100%;
 }
-body main .cardsContainer .card .photo .normal {
+body main .cardsContainer .card .photo .photoSprite {
   visibility: visible;
-  width: 70%;
-  height: 70%;
+  width: 200px;
+  height: 200px;
   position: absolute;
-  transition: 500ms;
-}
-body main .cardsContainer .card .photo .shiny {
-  visibility: hidden;
-  width: 70%;
-  height: 70%;
-  position: absolute;
-  transition: 500ms;
-}
-body main .cardsContainer .card .photo:hover .normal {
-  visibility: hidden;
-  transition: 500ms;
-}
-body main .cardsContainer .card .photo:hover .shiny {
-  visibility: visible;
   transition: 500ms;
 }
 body main .cardsContainer .card .types {
@@ -208,6 +193,7 @@ body main .moreInfos .closeInfo {
   cursor: pointer;
   transition: 500ms;
   font-family: "Pixelify Sans", sans-serif;
+  border: 3px solid rgba(0, 0, 0, 0.3);
 }
 body main .moreInfos .closeInfo:hover {
   transform: rotate(360deg);
@@ -216,8 +202,10 @@ body main .moreInfos .closeInfo:hover {
 body main .moreInfos .moreInfo {
   width: 80%;
   min-width: 1500px;
+  max-width: 2000px;
   height: 70%;
   min-height: 650px;
+  max-height: 1200px;
   background: rgb(237, 85, 100);
   display: flex;
   border-radius: 30px 30px 30px 30px;
@@ -229,6 +217,7 @@ body main .moreInfos .moreInfo .pokeInfo {
   display: flex;
   flex-direction: column;
   border-radius: 30px 0px 0px 30px;
+  border: 3px solid rgba(0, 0, 0, 0.3);
 }
 body main .moreInfos .moreInfo .pokeInfo .pokeInfoNameId {
   background-color: rgba(0, 0, 0, 0.3);
@@ -237,14 +226,14 @@ body main .moreInfos .moreInfo .pokeInfo .pokeInfoNameId {
   align-items: center;
   gap: 1rem;
   width: 100%;
-  height: 80px;
-  border-radius: 30px 0px 0px 0px;
+  height: 13%;
+  border-radius: 27px 0px 0px 0px;
 }
 body main .moreInfos .moreInfo .pokeInfo .pokeInfoNameId .pokeInfoName, body main .moreInfos .moreInfo .pokeInfo .pokeInfoNameId .pokeInfoId {
   font-family: "Pixelify Sans", sans-serif;
   font-size: 1.8rem;
   font-weight: 1000;
-  color: #ffffff;
+  color: #e6e9ed;
   text-transform: uppercase;
   text-align: center;
 }
@@ -253,16 +242,17 @@ body main .moreInfos .moreInfo .pokeInfo .infoPhoto {
   align-items: center;
   justify-content: center;
   position: relative;
+  height: 55%;
 }
 body main .moreInfos .moreInfo .pokeInfo .infoPhoto .infoSprite {
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
   position: absolute;
 }
 body main .moreInfos .moreInfo .pokeInfo .changeSpriteContainer {
   background-color: rgba(0, 0, 0, 0.2);
   width: 100%;
-  height: 35px;
+  height: 7%;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -276,4 +266,132 @@ body main .moreInfos .moreInfo .pokeInfo .changeSpriteContainer .btnSprite {
 body main .moreInfos .moreInfo .pokeInfo .changeSpriteContainer .btnSprite:hover {
   transform: scale(1.1);
   transition: 500ms;
+}
+body main .moreInfos .moreInfo .pokeInfo .infoMore {
+  border-radius: 0px 0px 0px 30px;
+  width: 100%;
+  height: 38%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+body main .moreInfos .moreInfo .pokeInfo .infoMore .infoMoreValues {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  width: 80%;
+}
+body main .moreInfos .moreInfo .pokeInfo .infoMore .infoMoreValues svg {
+  height: 40px;
+  width: 40px;
+}
+body main .moreInfos .moreInfo .pokeInfo .infoMore .infoMoreValues .infoMoreValuesText {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #e6e9ed;
+}
+body main .moreInfos .moreInfo .pokeInfo .infoMore .infoTypes {
+  display: flex;
+  justify-content: space-around;
+  width: 60%;
+  padding: 0.6rem;
+  gap: 2rem;
+}
+body main .moreInfos .moreInfo .pokeInfo .infoMore .infoTypes .infoType {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  transition: 1s;
+}
+body main .moreInfos .moreInfo .pokeInfo .infoMore .infoTypes .infoType .infoTypeIcon {
+  display: flex;
+  align-items: center;
+  padding: 0.2rem 0.2rem;
+  gap: 0.2rem;
+  transition: 500ms;
+  position: relative;
+}
+body main .moreInfos .moreInfo .pokeInfo .infoMore .infoTypes .infoType .infoTypeIcon img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  transition: 1s;
+}
+body main .moreInfos .moreInfo .pokeInfo .infoMore .infoTypes .infoType .infoTypeIcon .infoTypeName {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #e6e9ed;
+  position: absolute;
+  transform: translateX(-10%) rotateX(-90deg);
+  visibility: hidden;
+  transition: 0.1s;
+  padding-right: 1rem;
+}
+body main .moreInfos .moreInfo .pokeInfo .infoMore .infoTypes .infoType .infoTypeIcon:hover {
+  transition: 1.5s;
+}
+body main .moreInfos .moreInfo .pokeInfo .infoMore .infoTypes .infoType .infoTypeIcon:hover img {
+  transform: rotate(360deg);
+  transition: 1.5s;
+}
+body main .moreInfos .moreInfo .pokeInfo .infoMore .infoTypes .infoType .infoTypeIcon:hover .infoTypeName {
+  position: relative;
+  transform: translateX(0%) rotateX(0deg);
+  visibility: visible;
+  transition: 1s;
+}
+body main .moreInfos .moreInfo .pokeMore {
+  width: 75%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0px 30px 30px 0px;
+  border: 3px solid rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.2);
+}
+body main .moreInfos .moreInfo .pokeMore .moreLineUp {
+  width: 100%;
+  height: 65%;
+  padding-left: 1rem;
+}
+body main .moreInfos .moreInfo .pokeMore .moreLineUp .moreDescriptionText {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.infoStatus {
+  border-radius: 0px 0px 0px 30px;
+  width: 100%;
+  height: 38%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+}
+.infoStatus .infoStat {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  gap: 0.2rem;
+}
+.infoStatus .infoStat .infoStatName {
+  color: #e6e9ed;
+  font-weight: 600;
+}
+.infoStatus .infoStat .infoStatBar {
+  width: 100%;
+  height: 20px;
+  border-radius: 20px;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+}
+.infoStatus .infoStat .infoStatBar .infoStatProgress {
+  height: 100%;
+  background-color: rgb(255, 113, 31);
+  border-radius: 30px 0px 0px 30px;
 }/*# sourceMappingURL=style.css.map */
