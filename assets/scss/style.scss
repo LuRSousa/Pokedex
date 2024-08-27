@@ -14,6 +14,7 @@
 
 body{
     background: rgb(237, 85, 100);
+    //background-color: #616161;
     overflow-x: hidden;
 
     nav{
@@ -21,6 +22,7 @@ body{
         width: 100vw;
         border-bottom: 2px solid rgba(0, 0, 0, 0.3);
         background: rgb(214, 77, 90);
+        //background-color: #414141;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -214,204 +216,272 @@ body{
                 justify-content: center;
                 justify-self: flex-end;
                 align-self: flex-end;
-                margin-right: 11%;
+                margin-right: 23.5%;
                 background-color: rgb(214, 77, 90);
                 color: #e6e9ed;
                 cursor: pointer;
-                transition: 500ms;
+                transition: 300ms;
                 font-family: "Pixelify Sans", sans-serif;
                 border: 3px solid rgba(0, 0, 0, 0.3);
 
                 &:hover{
                     transform: rotate(360deg);
-                    transition: 500ms;
+                    transition: 300ms;
                 }
             }
 
             .moreInfo{
-                width: 80%;
-                min-width: 1500px;
-                max-width: 2000px;
-                height: 70%;
-                min-height: 650px;
-                max-height: 1200px;
-                background: rgb(237, 85, 100);
+                width: 50%;
+                min-width: 1000px;
+                height: 650px;
+                background-color: rgba(237, 85, 100, 0.6);
+                backdrop-filter: blur(20px);
                 display: flex;
+                flex-direction: column;
                 border-radius: 30px 30px 30px 30px;
 
-    
-                .pokeInfo{
-                    background-color: rgba(0, 0, 0, 0.2);
-                    height: 100%;
-                    width: 25%;
+                .pokeInfoNameId{
+                    background-color: rgba(0, 0, 0, 0.3);
                     display: flex;
-                    flex-direction: column;
-                    border-radius: 30px 0px 0px 30px;
-                    border: 3px solid rgba(0, 0, 0, 0.3);
-    
-                    .pokeInfoNameId{
-                        background-color: rgba(0, 0, 0, 0.3);
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        gap: 1rem;
-                        width: 100%;
-                        height: 13%;
-                        border-radius: 27px 0px 0px 0px;
-                        
-                        .pokeInfoName, .pokeInfoId{
-                            font-family: "Pixelify Sans", sans-serif;
-                            font-size: 1.8rem;
-                            font-weight: 1000;
-                            color: #e6e9ed;
-                            text-transform: uppercase;
-                            text-align: center;
-                        }
-                    }
-
-                    .infoPhoto{
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        position: relative;
-                        height: 55%;
-
-                        .infoSprite{
-                            width: 300px;
-                            height: 300px;
-                            position: absolute;
-                        }
-                    }
+                    justify-content: center;
+                    align-items: center;
+                    gap: 1rem;
+                    width: 100%;
+                    height: 12%;
+                    border-radius: 27px 27px 0px 0px;
+                    border: 3px solid rgba(0, 0, 0, 0.2);
                     
-                    .changeSpriteContainer{
-                        background-color: rgba(0, 0, 0, 0.2);
-                        width: 100%;
-                        height: 7%;
-                        display: flex;
-                        justify-content: space-around;
-                        align-items: center;
-
-                        .btnSprite{
-                            color: #e6e9ed;
-                            font-weight: 600;
-                            cursor: pointer;
-                            transition: 500ms;
-
-                            &:hover{
-                                transform: scale(1.1);
-                                transition: 500ms;
-                            }
-                        }
-                    }
-
-                    .infoMore{
-                        border-radius: 0px 0px 0px 30px;
-                        width: 100%;
-                        height: 38%;
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: center;
-                        gap: 0.5rem;
-
-                        .infoMoreValues{
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                            gap: 0.9rem;
-                            width: 80%;
-
-                            svg{
-                                height: 40px;
-                                width: 40px;
-                            }
-
-                            .infoMoreValuesText{
-                                font-size: 1.2rem;
-                                font-weight: 600;
-                                color: #e6e9ed;
-                            }
-                        }
-
-                        .infoTypes{
-                            display: flex;
-                            justify-content: space-around;
-                            width: 60%;
-                            padding: 0.6rem;
-                            gap: 2rem;
-                    
-                            .infoType{
-                                display: flex;
-                                justify-content: center;
-                                align-items: center;
-                                border-radius: 50px;
-                                transition: 1s;
-                    
-                                .infoTypeIcon{
-                                    display: flex;
-                                    align-items: center;
-                                    padding: 0.2rem 0.2rem;
-                                    gap: 0.2rem;
-                                    transition: 500ms;
-                                    position: relative;
-                    
-                                    img{
-                                        width: 50px;
-                                        height: 50px;
-                                        border-radius: 50%;
-                                        transition: 1s;
-                                    }
-                    
-                                    .infoTypeName{
-                                        font-size: 1.2rem;
-                                        font-weight: 600;
-                                        color: #e6e9ed;
-                                        position: absolute;
-                                        transform: translateX(-10%) rotateX(-90deg);
-                                        visibility: hidden;
-                                        transition: 0.1s;
-                                        padding-right: 1rem;
-                                    }
-            
-                                    &:hover{
-                                        transition: 1.5s;
-                        
-                                        img {
-                                            transform: rotate(360deg);
-                                            transition: 1.5s;
-                                        }
-                            
-                                        .infoTypeName {
-                                            position: relative;
-                                            transform: translateX(0%) rotateX(0deg);
-                                            visibility: visible;
-                                            transition: 1s;
-                                        }
-                                    }
-                                }                    
-                            }
-                        }
+                    .pokeInfoName, .pokeInfoId{
+                        font-family: "Pixelify Sans", sans-serif;
+                        font-size: 1.8rem;
+                        font-weight: 1000;
+                        color: #e6e9ed;
+                        text-transform: uppercase;
+                        text-align: center;
                     }
                 }
 
-                .pokeMore{
-                    width: 75%;
-                    height: 100%;
+                .pokeEverything{
                     display: flex;
-                    flex-direction: column;
-                    border-radius: 0px 30px 30px 0px;
-                    border: 3px solid rgba(0, 0, 0, 0.3);
-                    background-color: rgba(0, 0, 0, 0.2);
+                    height: 88%;
 
-                    .moreLineUp{
-                        width: 100%;
-                        height: 65%;
-                        padding-left: 1rem;
+                    .pokeInfo{
+                        background-color: rgba(0, 0, 0, 0.2);
+                        height: 100%;
+                        width: 35%;
+                        display: flex;
+                        flex-direction: column;
+                        border-radius: 0px 0px 0px 30px;
+                        border: 3px solid rgba(0, 0, 0, 0.3);
+    
+                        .infoPhoto{
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            position: relative;
+                            height: 55%;
+                            border-bottom: 3px solid rgba(0, 0, 0, 0.3);
+    
+                            .infoSprite{
+                                width: 260px;
+                                height: 260px;
+                                position: absolute;
+                            }
 
-                        .moreDescriptionText{
-                            font-size: 1.1rem;
-                            font-weight: 500;
-                            color: #ffffff;
+                            .infoTypes{
+                                display: flex;
+                                justify-content: space-around; 
+                                padding: 0.3rem;
+                                gap: 1rem;
+                                position: absolute;
+                                top: 2%;
+                                right: 2%;
+                        
+                                .infoType{
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    border-radius: 50px;
+                        
+                                    .infoTypeIcon{
+                                        display: flex;
+                                        align-items: center;
+                                        padding: 0.2rem 0.2rem;
+                                        gap: 0.2rem;
+                                        position: relative;
+                        
+                                        img{
+                                            width: 50px;
+                                            height: 50px;
+                                            border-radius: 50%;
+                                        }
+                                    }                    
+                                }
+                            }
+                        }
+                        
+                        .changeSpriteContainer{
+                            background-color: rgba(0, 0, 0, 0.3);
+                            width: 100%;
+                            height: 7%;
+                            display: flex;
+                            justify-content: space-around;
+                            align-items: center;
+    
+                            .btnSprite{
+                                color: #e6e9ed;
+                                font-weight: 600;
+                                cursor: pointer;
+                                transition: 200ms;
+    
+                                &:hover{
+                                    transform: scale(1.05);
+                                    transition: 200ms;
+                                }
+                            }
+                        }
+    
+                        .infoMore{
+                            border-radius: 0px 0px 0px 30px;
+                            width: 100%;
+                            height: 38%;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
+                            gap: 0.5rem;
+    
+                            .infoMoreValues{
+                                display: flex;
+                                align-items: center;
+                                justify-content: left;
+                                gap: 0.9rem;
+                                width: 80%;
+    
+                                svg{
+                                    height: 2.5rem;
+                                    width: 2.5rem;
+                                }
+    
+                                .infoMoreValuesText{
+                                    font-size: 1rem;
+                                    font-weight: 600;
+                                    color: #e6e9ed;
+                                }
+                            }
+                        }
+                    }
+    
+                    .pokeMore{
+                        width: 65%;
+                        height: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        border-radius: 0px 0px 30px 0px;
+                        background-color: rgba(0, 0, 0, 0.2);
+                        
+                        .infoDescription{
+                            height: 20%;
+                            position: relative;
+                            border: 3px solid rgba(0, 0, 0, 0.3);
+                            padding: 1.2rem 1.2rem 0rem 1.2rem;
+
+                            .infoDescriptionTitle{
+                                position: absolute;
+                                top: 0%;
+                                left: 0%;
+                                background-color: rgba(0, 0, 0, 0.3);
+                                color: #e6e9ed;
+                                font-weight: 600;
+                                font-size: 1rem;
+                                padding: 0.2rem 2rem 0.4rem 1rem;
+                                border-radius: 0px 0px 30px 0px;
+                            }
+
+                            .infoDescriptionText{
+                                font-size: 1.1rem;
+                                font-weight: 500;
+                                color: #e6e9ed;
+                                display: flex;
+                                align-items: center;
+                                width: 100%;
+                                height: 100%;
+                            }
+                        }
+    
+                        .infoStats{
+                            width: 100%;
+                            height: 35%;
+                            display: flex;
+                            flex-wrap: wrap;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
+                            gap: 0.5rem;
+                            padding: 1.2rem 1.2rem 0rem 1.2rem;
+                            border: 3px solid rgba(0, 0, 0, 0.3);
+                            position: relative;
+
+                            .infoStatsTitle{
+                                position: absolute;
+                                top: 0%;
+                                left: 0%;
+                                background-color: rgba(0, 0, 0, 0.3);
+                                color: #e6e9ed;
+                                font-weight: 600;
+                                font-size: 1rem;
+                                padding: 0.2rem 2rem 0.4rem 1rem;
+                                border-radius: 0px 0px 30px 0px;
+                            }
+                        
+                            .infoStat{
+                                display: flex;
+                                flex-direction: column;
+                                width: 40%;
+                                gap: 0.2rem;
+                        
+                                .infoStatName{
+                                    color: #e6e9ed;
+                                    font-weight: 600;
+                                }
+                        
+                                .infoStatBar{
+                                    width: 100%;
+                                    height: 20px;
+                                    border-radius: 20px;
+                                    border: 2px solid rgba(0, 0, 0, 0.3);
+                                    background-color: rgba(0, 0, 0, 0.3);
+                        
+                                    .infoStatProgress{
+                                        height: 100%;
+                                        border-radius: 30px 0px 0px 30px;
+                                    }
+                                }
+                            }
+                        }
+
+                        .infoEvolutions{
+                            height: 45%;
+                            width: 100%;
+                            position: relative;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            padding: 1.2rem 1.2rem 0rem 1.2rem;
+                            border: 3px solid rgba(0, 0, 0, 0.3);
+                            border-radius: 0px 0px 27px 0px;
+
+                            .infoEvolutionsTitle{
+                                position: absolute;
+                                top: 0%;
+                                left: 0%;
+                                background-color: rgba(0, 0, 0, 0.3);
+                                color: #e6e9ed;
+                                font-weight: 600;
+                                font-size: 1rem;
+                                padding: 0.2rem 2rem 0.4rem 1rem;
+                                border-radius: 0px 0px 30px 0px;
+                            }
                         }
                     }
                 }
@@ -419,42 +489,3 @@ body{
         }  
     }
 }
-
-
-
-.infoStatus{
-    border-radius: 0px 0px 0px 30px;
-    width: 100%;
-    height: 38%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.2rem;
-
-    .infoStat{
-        display: flex;
-        flex-direction: column;
-        width: 60%;
-        gap: 0.2rem;
-
-        .infoStatName{
-            color: #e6e9ed;
-            font-weight: 600;
-        }
-
-        .infoStatBar{
-            width: 100%;
-            height: 20px;
-            border-radius: 20px;
-            border: 2px solid rgba(0, 0, 0, 0.2);
-
-            .infoStatProgress{
-                height: 100%;
-                background-color: rgb(255, 113, 31);
-                border-radius: 30px 0px 0px 30px;
-            }
-        }
-    }
-}
-

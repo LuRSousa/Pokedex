@@ -3,7 +3,9 @@ const body = document.querySelector('body');
 
 const main = document.querySelector('main');
 
-const cardsContainer = document.createElement('div');
+const searchBar = document.querySelector('#search');
+
+const cardsContainer = document.createElement('ul');
 cardsContainer.classList = "cardsContainer";
 
 const moreInfos = document.createElement('div');
@@ -22,7 +24,6 @@ const getPoke = async(id) => {
     try {
         const urlPoke = `https://pokeapi.co/api/v2/pokemon/${id}`;
         const requestPoke = await fetch(urlPoke);
-        if (!requestPoke.ok) throw new Error(`Erro ao carregar pokémon de id: ${id}`);
         const infoPoke = await requestPoke.json();
 
         const urlSpecie = `https://pokeapi.co/api/v2/pokemon-species/${id}/`;
@@ -40,7 +41,7 @@ const getPoke = async(id) => {
 //Criando Cards
 const cardPoke = (poke, specie) => {
     //Criando Card Pequeno
-    const card = document.createElement('div');
+    const card = document.createElement('li');
     card.classList = "card";
 
 
@@ -218,7 +219,7 @@ const cardPoke = (poke, specie) => {
         body.style.overflow = "hidden";
 
 
-        //Criando Div (Card Grande)
+        //Criando Tela (Card Grande)
         moreInfos.classList = "moreInfos";
         const closeInfo = document.createElement('div');
 
@@ -234,11 +235,12 @@ const cardPoke = (poke, specie) => {
         });
 
 
-        //Colando Nome e ID (Card Grande) 
+        //Criando Card Grande
         const moreInfo = document.createElement('div');
         moreInfo.classList = "moreInfo";
-        const pokeInfo = document.createElement('div');
-        pokeInfo.classList = "pokeInfo";
+
+
+        //Colando Nome e ID (Card Grande) 
         const pokeInfoNameId = document.createElement('div');
         pokeInfoNameId.classList = "pokeInfoNameId";
 
@@ -262,6 +264,16 @@ const cardPoke = (poke, specie) => {
             pokeInfoId.textContent = `#${poke.id}`;
         };
 
+
+        //Criando Div Geral (Card Grande)
+        const pokeEverything = document.createElement('div');
+        pokeEverything.classList = "pokeEverything";
+        
+
+        //Criando Div Lado Esquerdo (Card Grande)
+        const pokeInfo = document.createElement('div');
+        pokeInfo.classList = "pokeInfo";
+        
 
         //Colocando Sprite (Card Grande)
         const infoPhoto = document.createElement('div');
@@ -298,6 +310,82 @@ const cardPoke = (poke, specie) => {
         });
         infoPhoto.addEventListener('mouseleave', function(){
             infoSprite.src = `${poke.sprites.other.home.front_default}`;
+        });
+
+
+        //Colocando Tipagem (Card Grande)
+        const infoTypes = document.createElement('div');
+        infoTypes.classList = "infoTypes";
+
+        const infoTypeAPI = poke.types;
+        infoTypeAPI.forEach((typeRes) => {
+            const infoType = document.createElement('div');
+            infoType.classList = "infoType";
+        
+            const infoTypeIcon = document.createElement('div');
+            infoTypeIcon.classList = "infoTypeIcon";
+        
+            const infoImgTypeIcon = document.createElement('img');
+
+            if(typeRes.type.name == "bug"){
+                infoType.style.backgroundColor = "#90c12c"
+                infoImgTypeIcon.src = `assets/img/types/bugIcon.png`;
+            } else if(typeRes.type.name == "dark"){
+                infoType.style.backgroundColor = "#5a5366"
+                infoImgTypeIcon.src = `assets/img/types/darkIcon.png`;
+            } else if(typeRes.type.name == "dragon"){
+                infoType.style.backgroundColor = "#0a6dc4"
+                infoImgTypeIcon.src = `assets/img/types/dragonIcon.png`;
+            } else if(typeRes.type.name == "electric"){
+                infoType.style.backgroundColor = "#f3d23b"
+                infoImgTypeIcon.src = `assets/img/types/electricIcon.png`;
+            } else if(typeRes.type.name == "fairy"){
+                infoType.style.backgroundColor = "#ec8fe6"
+                infoImgTypeIcon.src = `assets/img/types/fairyIcon.png`;
+            } else if(typeRes.type.name == "fighting"){
+                infoType.style.backgroundColor = "#ce4069"
+                infoImgTypeIcon.src = `assets/img/types/fightingIcon.png`;
+            } else if(typeRes.type.name == "fire"){
+                infoType.style.backgroundColor = "#ff9c54"
+                infoImgTypeIcon.src = `assets/img/types/fireIcon.png`;
+            } else if(typeRes.type.name == "flying"){
+                infoType.style.backgroundColor = "#8fa8dd"
+                infoImgTypeIcon.src = `assets/img/types/flyingIcon.png`;
+            } else if(typeRes.type.name == "ghost"){
+                infoType.style.backgroundColor = "#5269ac"
+                infoImgTypeIcon.src = `assets/img/types/ghostIcon.png`;
+            } else if(typeRes.type.name == "grass"){
+                infoType.style.backgroundColor = "#63bb5b"
+                infoImgTypeIcon.src = `assets/img/types/grassIcon.png`;
+            } else if(typeRes.type.name == "ground"){
+                infoType.style.backgroundColor = "#da7844"
+                infoImgTypeIcon.src = `assets/img/types/groundIcon.png`;
+            } else if(typeRes.type.name == "ice"){
+                infoType.style.backgroundColor = "#74cec0"
+                infoImgTypeIcon.src = `assets/img/types/iceIcon.png`;
+            } else if(typeRes.type.name == "normal"){
+                infoType.style.backgroundColor = "#9099a1"
+                infoImgTypeIcon.src = `assets/img/types/normalIcon.png`;
+            } else if(typeRes.type.name == "poison"){
+                infoType.style.backgroundColor = "#ab6ac8"
+                infoImgTypeIcon.src = `assets/img/types/poisonIcon.png`;
+            } else if(typeRes.type.name == "psychic"){
+                infoType.style.backgroundColor = "#f97176"
+                infoImgTypeIcon.src = `assets/img/types/psychicIcon.png`;
+            } else if(typeRes.type.name == "rock"){
+                infoType.style.backgroundColor = "#c7b78b"
+                infoImgTypeIcon.src = `assets/img/types/rockIcon.png`;
+            } else if(typeRes.type.name == "steel"){
+                infoType.style.backgroundColor = "#5a8ea1"
+                infoImgTypeIcon.src = `assets/img/types/steelIcon.png`;
+            } else if(typeRes.type.name == "water"){
+                infoType.style.backgroundColor = "#4d90d5"
+                infoImgTypeIcon.src = `assets/img/types/waterIcon.png`;
+            }
+        
+            infoTypeIcon.appendChild(infoImgTypeIcon);
+            infoType.appendChild(infoTypeIcon);
+            infoTypes.appendChild(infoType);
         });
 
 
@@ -370,7 +458,7 @@ const cardPoke = (poke, specie) => {
         });
 
 
-        //Colocando Peso, Altura e Tipagem
+        //Colocando Altura (Card Grande)
         const infoMore = document.createElement('div');
         infoMore.classList = "infoMore";
 
@@ -405,6 +493,8 @@ const cardPoke = (poke, specie) => {
         const height = poke.height / 10;
         infoMoreHeightValue.textContent = `Height: ${height}m`;
 
+
+        //Colocando Peso (Card Grande)
         const infoMoreWeight = document.createElement('div');
         infoMoreWeight.classList = "infoMoreValues";
         const weightSvgNS = "http://www.w3.org/2000/svg";
@@ -433,95 +523,70 @@ const cardPoke = (poke, specie) => {
         const weight = poke.weight / 10;
         infoMoreWeightValue.textContent = `Weight: ${weight}kg`;
 
-        const infoTypes = document.createElement('div');
-        infoTypes.classList = "infoTypes";
 
-        const infoTypeAPI = poke.types;
-        infoTypeAPI.forEach((typeRes) => {
-            const infoType = document.createElement('div');
-            infoType.classList = "infoType";
-        
-            const infoTypeIcon = document.createElement('div');
-            infoTypeIcon.classList = "infoTypeIcon";
-        
-            const infoImgTypeIcon = document.createElement('img');
-        
-            const infoTypeName = document.createElement('div');
-            infoTypeName.classList = "infoTypeName";
-            infoTypeName.textContent = typeRes.type.name;
+        //Colocando Felicidade (Card Grande)
+        const infoMoreHappiness = document.createElement('div');
+        infoMoreHappiness.classList = "infoMoreValues";
+        const happinessSvgNS = "http://www.w3.org/2000/svg";
+        const happinessSvg = document.createElementNS(happinessSvgNS, "svg");
+        happinessSvg.setAttribute("viewBox", "0 0 24 24");
+        happinessSvg.setAttribute("fill", "none");
+        happinessSvg.setAttribute("xmlns", happinessSvgNS);
+        const happinessBgCarrier = document.createElementNS(happinessSvgNS, "g");
+        happinessBgCarrier.setAttribute("id", "SVGRepo_bgCarrier");
+        happinessBgCarrier.setAttribute("stroke-width", "0");
+        const happinessTracerCarrier = document.createElementNS(happinessSvgNS, "g");
+        happinessTracerCarrier.setAttribute("id", "SVGRepo_tracerCarrier");
+        happinessTracerCarrier.setAttribute("stroke-linecap", "round");
+        happinessTracerCarrier.setAttribute("stroke-linejoin", "round");
+        const happinessIconCarrier = document.createElementNS(happinessSvgNS, "g");
+        happinessIconCarrier.setAttribute("id", "SVGRepo_iconCarrier");
+        const happinessPath = document.createElementNS(happinessSvgNS, "path");
+        happinessPath.setAttribute("d", "M2 9.1371C2 14 6.01943 16.5914 8.96173 18.9109C10 19.7294 11 20.5 12 20.5C13 20.5 14 19.7294 15.0383 18.9109C17.9806 16.5914 22 14 22 9.1371C22 4.27416 16.4998 0.825464 12 5.50063C7.50016 0.825464 2 4.27416 2 9.1371Z");
+        happinessPath.setAttribute("fill", "#e6e9ed");
+        happinessIconCarrier.appendChild(happinessPath);
+        happinessSvg.appendChild(happinessBgCarrier);
+        happinessSvg.appendChild(happinessTracerCarrier);
+        happinessSvg.appendChild(happinessIconCarrier);
+        const infoMoreHappinessValue = document.createElement('div');
+        infoMoreHappinessValue.classList = "infoMoreValuesText";
+        const happinnes = Math.round(specie.base_happiness / 2.55);
+        infoMoreHappinessValue.textContent = `Base Happinnes: ${happinnes}%`;
 
-            if(typeRes.type.name == "bug"){
-                infoType.style.backgroundColor = "#90c12c"
-                infoImgTypeIcon.src = `assets/img/types/bugIcon.png`;
-            } else if(typeRes.type.name == "dark"){
-                infoType.style.backgroundColor = "#5a5366"
-                infoImgTypeIcon.src = `assets/img/types/darkIcon.png`;
-            } else if(typeRes.type.name == "dragon"){
-                infoType.style.backgroundColor = "#0a6dc4"
-                infoImgTypeIcon.src = `assets/img/types/dragonIcon.png`;
-            } else if(typeRes.type.name == "electric"){
-                infoType.style.backgroundColor = "#f3d23b"
-                infoImgTypeIcon.src = `assets/img/types/electricIcon.png`;
-            } else if(typeRes.type.name == "fairy"){
-                infoType.style.backgroundColor = "#ec8fe6"
-                infoImgTypeIcon.src = `assets/img/types/fairyIcon.png`;
-            } else if(typeRes.type.name == "fighting"){
-                infoType.style.backgroundColor = "#ce4069"
-                infoImgTypeIcon.src = `assets/img/types/fightingIcon.png`;
-            } else if(typeRes.type.name == "fire"){
-                infoType.style.backgroundColor = "#ff9c54"
-                infoImgTypeIcon.src = `assets/img/types/fireIcon.png`;
-            } else if(typeRes.type.name == "flying"){
-                infoType.style.backgroundColor = "#8fa8dd"
-                infoImgTypeIcon.src = `assets/img/types/flyingIcon.png`;
-            } else if(typeRes.type.name == "ghost"){
-                infoType.style.backgroundColor = "#5269ac"
-                infoImgTypeIcon.src = `assets/img/types/ghostIcon.png`;
-            } else if(typeRes.type.name == "grass"){
-                infoType.style.backgroundColor = "#63bb5b"
-                infoImgTypeIcon.src = `assets/img/types/grassIcon.png`;
-            } else if(typeRes.type.name == "ground"){
-                infoType.style.backgroundColor = "#da7844"
-                infoImgTypeIcon.src = `assets/img/types/groundIcon.png`;
-            } else if(typeRes.type.name == "ice"){
-                infoType.style.backgroundColor = "#74cec0"
-                infoImgTypeIcon.src = `assets/img/types/iceIcon.png`;
-            } else if(typeRes.type.name == "normal"){
-                infoType.style.backgroundColor = "#9099a1"
-                infoImgTypeIcon.src = `assets/img/types/normalIcon.png`;
-            } else if(typeRes.type.name == "poison"){
-                infoType.style.backgroundColor = "#ab6ac8"
-                infoImgTypeIcon.src = `assets/img/types/poisonIcon.png`;
-            } else if(typeRes.type.name == "psychic"){
-                infoType.style.backgroundColor = "#f97176"
-                infoImgTypeIcon.src = `assets/img/types/psychicIcon.png`;
-            } else if(typeRes.type.name == "rock"){
-                infoType.style.backgroundColor = "#c7b78b"
-                infoImgTypeIcon.src = `assets/img/types/rockIcon.png`;
-            } else if(typeRes.type.name == "steel"){
-                infoType.style.backgroundColor = "#5a8ea1"
-                infoImgTypeIcon.src = `assets/img/types/steelIcon.png`;
-            } else if(typeRes.type.name == "water"){
-                infoType.style.backgroundColor = "#4d90d5"
-                infoImgTypeIcon.src = `assets/img/types/waterIcon.png`;
-            }
-        
-            infoTypeIcon.appendChild(infoImgTypeIcon);
-            infoTypeIcon.appendChild(infoTypeName);
-            infoType.appendChild(infoTypeIcon);
-            infoTypes.appendChild(infoType);
-        });
-        
 
-        //Colocando Descrição
+        //Colocando Chance de Captura (Card Grande)
+        const infoMoreCatch = document.createElement('div');
+        infoMoreCatch.classList = "infoMoreValues";
+        let catchSvgNamespace = "http://www.w3.org/2000/svg";
+        let catchSvg = document.createElementNS(catchSvgNamespace, "svg");
+        catchSvg.setAttribute("fill", "#e6e9ed");
+        catchSvg.setAttribute("viewBox", "0 0 512 512");
+        catchSvg.setAttribute("data-name", "Layer 1");
+        catchSvg.setAttribute("id", "Layer_1");
+        let catchPath = document.createElementNS(catchSvgNamespace, "path");
+        catchPath.setAttribute("d", "M450.46,256.09C449.35,175.17,399.81,102.71,324,73.79,247.59,44.67,157.49,69,105.82,132.13,54.4,195,46.61,285.58,88.49,355.68c41.8,69.95,123.74,106,203.55,91.63,91-16.37,156.14-98.12,158.35-189.14A20.16,20.16,0,0,0,450.46,256.09ZM119.05,174.38C152.76,118,220.23,87,285,99.43c69.4,13.29,120.43,70.47,128.83,139H318.41c-8.26-27.36-32-48-62.62-48-29.65,0-55.15,20.65-63.11,48H97.74A158,158,0,0,1,119.05,174.38ZM286.13,256.1c-2,38.75-60.67,39.4-60.67,0S284.17,217.33,286.13,256.1Zm24,149.79C246.85,428.58,175,408.74,132.3,356.82a157.53,157.53,0,0,1-34.57-83H192.6c7.91,27.39,33.7,48,63.19,48,30.67,0,54.36-20.68,62.62-48h95.45C406.61,333,367.54,385.32,310.14,405.89Z");
+        catchSvg.appendChild(catchPath);
+        const infoMoreCatchValue = document.createElement('div');
+        infoMoreCatchValue.classList = "infoMoreValuesText";
+        const catchRate = Math.round(specie.capture_rate / 2.55);
+        infoMoreCatchValue.textContent = `Catch Rate: ${catchRate}%`;
+
+        //Criando Div Lado Direito (Card Grande)
         const pokeMore = document.createElement('div');
         pokeMore.classList = "pokeMore";
 
-        const moreLineUp = document.createElement('div');
-        moreLineUp.classList = "moreLineUp";
+        
+        //Colocando Descrição (Card Grande)
+        const infoDescription = document.createElement('div');
+        infoDescription.classList = "infoDescription";
 
-        const moreDescriptionText = document.createElement('div');
-        moreDescriptionText.classList = "moreDescriptionText";
+        const infoDescriptionTitle = document.createElement('div');
+        infoDescriptionTitle.classList = "infoDescriptionTitle";
+        infoDescriptionTitle.textContent = "Description";
+        infoDescription.appendChild(infoDescriptionTitle);
+
+        const infoDescriptionText = document.createElement('div');
+        infoDescriptionText.classList = "infoDescriptionText";
 
         if(specie.generation.name == "generation-i" || specie.generation.name == "generation-ii" || specie.generation.name == "generation-iii"){
             const fileterdFlavorTextEntries = specie.flavor_text_entries.filter(
@@ -530,17 +595,82 @@ const cardPoke = (poke, specie) => {
 
             const flavorTextEntry = fileterdFlavorTextEntries.length > 0 ? fileterdFlavorTextEntries[10] : {};
 
-            moreDescriptionText.textContent = flavorTextEntry.flavor_text;
-            moreLineUp.appendChild(moreDescriptionText);
+            infoDescriptionText.textContent = flavorTextEntry.flavor_text;
+            infoDescription.appendChild(infoDescriptionText);
         } else{
             const fileterdFlavorTextEntries = specie.flavor_text_entries.filter((element) => element.language.name === "en");
 
             const flavorTextEntry = fileterdFlavorTextEntries.length > 0 ? fileterdFlavorTextEntries[0] : {};
             
-            moreDescriptionText.textContent = flavorTextEntry.flavor_text;
-            moreLineUp.appendChild(moreDescriptionText);
+            infoDescriptionText.textContent = flavorTextEntry.flavor_text;
+            infoDescription.appendChild(infoDescriptionText);
         };
+
+
+        //Colocando Status (Card Grande)
+        const infoStats = document.createElement('div');
+        infoStats.classList = "infoStats";
+
+        const infoStatsTitle = document.createElement('div');
+        infoStatsTitle.classList = "infoStatsTitle";
+        infoStatsTitle.textContent = "Stats";
+        infoStats.appendChild(infoStatsTitle);
+
+        const statsAPI = poke.stats;
+        statsAPI.forEach((statsRes) => {
+            const infoStat = document.createElement('div');
+            infoStat.classList = "infoStat";
+            
+            const infoStatNameValue = document.createElement('div');
+            infoStatNameValue.classList = "infoStatNameValue";
+
+            const infoStatName = document.createElement('div');
+            infoStatName.classList = "infoStatName";
+            infoStatName.textContent = `${statsRes.stat.name}: ${statsRes.base_stat}`;
+
+            const infoStatBar = document.createElement('div');
+            infoStatBar.classList = "infoStatBar";
+
+            const infoStatProgress = document.createElement('div');
+            infoStatProgress.classList = "infoStatProgress";
+            const per255 = statsRes.base_stat / 2.55;
+            infoStatProgress.style.width = `${per255}%`;
+
+            if(statsRes.stat.name == "hp"){
+                infoStatProgress.style.backgroundColor = 'rgb(0, 175, 0)';
+            } else if(statsRes.stat.name == "attack"){
+                infoStatProgress.style.backgroundColor = 'rgb(255, 131, 131)';
+            } else if(statsRes.stat.name == "defense"){
+                infoStatProgress.style.backgroundColor = 'rgb(171, 126, 255)';
+            } else if(statsRes.stat.name == "special-attack"){
+                infoStatProgress.style.backgroundColor = 'rgb(255, 113, 31)';
+            } else if(statsRes.stat.name == "special-defense"){
+                infoStatProgress.style.backgroundColor = 'rgb(126, 135, 255)';
+            } else if(statsRes.stat.name == "speed"){
+                infoStatProgress.style.backgroundColor = 'rgb(255, 126, 197)';
+            };
+
+
+            infoStatNameValue.appendChild(infoStatName);
+            infoStatBar.appendChild(infoStatProgress);
+            infoStat.appendChild(infoStatNameValue);
+            infoStat.appendChild(infoStatBar);
+            infoStats.appendChild(infoStat);
+        });
+
+
+        //Colocando Linha Evolutiva (Card Grande)
+        const infoEvolutions = document.createElement('div');
+        infoEvolutions.classList = "infoEvolutions";
+
+        const infoEvolutionsTitle = document.createElement('div');
+        infoEvolutionsTitle.classList = "infoEvolutionsTitle";
+        infoEvolutionsTitle.textContent = "Evolution Chain";
+        infoEvolutions.appendChild(infoEvolutionsTitle);
+
         
+        
+
         
         //Aplicando Card Grande
         pokeInfoNameId.appendChild(pokeInfoId);
@@ -554,6 +684,7 @@ const cardPoke = (poke, specie) => {
 
         infoPhoto.appendChild(infoSvg);
         infoPhoto.appendChild(infoSprite);
+        infoPhoto.appendChild(infoTypes);
 
         infoMoreHeight.appendChild(heightSvg);
         infoMoreHeight.appendChild(infoMoreHeightValue);
@@ -561,76 +692,41 @@ const cardPoke = (poke, specie) => {
         infoMoreWeight.appendChild(weightSvg);
         infoMoreWeight.appendChild(infoMoreWeightValue);
 
+        infoMoreHappiness.appendChild(happinessSvg);
+        infoMoreHappiness.appendChild(infoMoreHappinessValue);
+
+        infoMoreCatch.appendChild(catchSvg);
+        infoMoreCatch.appendChild(infoMoreCatchValue);
+
         infoMore.appendChild(infoMoreHeight);
         infoMore.appendChild(infoMoreWeight);
-        infoMore.appendChild(infoTypes);
+        infoMore.appendChild(infoMoreHappiness);
+        infoMore.appendChild(infoMoreCatch);
 
-        pokeInfo.appendChild(pokeInfoNameId);
         pokeInfo.appendChild(infoPhoto);
         pokeInfo.appendChild(changeSpriteContainer);
         pokeInfo.appendChild(infoMore);
 
-        pokeMore.appendChild(moreLineUp);
+        pokeMore.appendChild(infoDescription);
+        pokeMore.appendChild(infoStats);
+        pokeMore.appendChild(infoEvolutions);
 
-        moreInfo.appendChild(pokeInfo);
-        moreInfo.appendChild(pokeMore);
+        pokeEverything.appendChild(pokeInfo);
+        pokeEverything.appendChild(pokeMore);
+
+        moreInfo.appendChild(pokeInfoNameId);
+        moreInfo.appendChild(pokeEverything);
 
         moreInfos.appendChild(moreInfo);
 
         moreInfos.style.visibility = "visible";
-    });
-
-    //Colocando Status (Card Grande)
-    const infoStatus = document.createElement('div');
-    infoStatus.classList = "infoStatus";
-
-    const statsAPI = poke.stats;
-    statsAPI.forEach((statsRes) => {
-        const infoStat = document.createElement('div');
-        infoStat.classList = "infoStat";
-        
-        const infoStatNameValue = document.createElement('div');
-        infoStatNameValue.classList = "infoStatNameValue";
-
-        const infoStatName = document.createElement('div');
-        infoStatName.classList = "infoStatName";
-        infoStatName.textContent = `${statsRes.stat.name}: ${statsRes.base_stat}`;
-
-        const infoStatBar = document.createElement('div');
-        infoStatBar.classList = "infoStatBar";
-
-        const infoStatProgress = document.createElement('div');
-        infoStatProgress.classList = "infoStatProgress";
-        const per255 = statsRes.base_stat / 2.55;
-        infoStatProgress.style.width = `${per255}%`;
-
-        if(statsRes.stat.name == "hp"){
-            infoStatProgress.style.backgroundColor = 'rgb(0, 175, 0)';
-        } else if(statsRes.stat.name == "attack"){
-            infoStatProgress.style.backgroundColor = 'rgb(255, 131, 131)';
-        } else if(statsRes.stat.name == "defense"){
-            infoStatProgress.style.backgroundColor = 'rgb(171, 126, 255)';
-        } else if(statsRes.stat.name == "special-attack"){
-            infoStatProgress.style.backgroundColor = 'rgb(255, 113, 31)';
-        } else if(statsRes.stat.name == "special-defense"){
-            infoStatProgress.style.backgroundColor = 'rgb(126, 135, 255)';
-        } else if(statsRes.stat.name == "speed"){
-            infoStatProgress.style.backgroundColor = 'rgb(255, 126, 197)';
-        };
-
-
-        infoStatNameValue.appendChild(infoStatName);
-        infoStatBar.appendChild(infoStatProgress);
-        infoStat.appendChild(infoStatNameValue);
-        infoStat.appendChild(infoStatBar);
-        infoStatus.appendChild(infoStat);
     });
 };
 
 
 //Aplicando Cards ao Site
 main.appendChild(moreInfos);
-main.appendChild(cardsContainer)
+main.appendChild(cardsContainer);
 
 fecthPoke();
 
