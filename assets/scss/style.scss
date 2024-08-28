@@ -44,16 +44,6 @@ body{
                 border-radius: 30px;
                 padding-left: 1rem;
             }
-
-            .searchIcon{
-                cursor: pointer;
-                transition: 500ms;
-
-                &:hover{
-                    transform: scale(1.1);
-                    transition: 500ms;
-                }
-            }
         }
     }
 

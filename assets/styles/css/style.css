@@ -41,14 +41,6 @@ body nav .search #search {
   border-radius: 30px;
   padding-left: 1rem;
 }
-body nav .search .searchIcon {
-  cursor: pointer;
-  transition: 500ms;
-}
-body nav .search .searchIcon:hover {
-  transform: scale(1.1);
-  transition: 500ms;
-}
 body main .cardsContainer {
   display: flex;
   justify-content: center;

@@ -85,7 +85,7 @@ const getPoke = async(id) => {
 
 
 //Criando Cards
-const cardPoke = (poke, specie, arrayEvolution) => {
+const cardPoke = (poke, specie, arrayEvolution) => {    
     //Criando Card Pequeno
     const card = document.createElement('li');
     card.classList = "card";
@@ -112,6 +112,7 @@ const cardPoke = (poke, specie, arrayEvolution) => {
 
     const name = document.createElement('div');
     name.classList = "name";
+    name.id = "name";
     name.textContent = `${specie.name}`;
 
 
@@ -709,5 +710,6 @@ const cardPoke = (poke, specie, arrayEvolution) => {
 //Aplicando Cards ao Site
 main.appendChild(moreInfos);
 main.appendChild(cardsContainer);
+
 
 fecthPoke();
