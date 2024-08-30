@@ -64,6 +64,9 @@ body{
                 align-items: center;
                 width: 250px;
                 border-radius: 20px;
+                animation: appearCard linear;
+                animation-timeline: view();
+                animation-range: entry 0;
             
                 .info{
                     display: flex;
@@ -497,5 +500,15 @@ body{
                 }
             }
         }  
+    }
+}
+
+@keyframes appearCard{
+    from{
+        opacity: 0;
+        scale: 0.5;
+    } to{
+        opacity: 1;
+        scale: 1;
     }
 }
