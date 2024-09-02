@@ -10,16 +10,30 @@ cardsContainer.classList = "cardsContainer";
 
 const moreInfos = document.createElement('div');
 
-
-//Funções API
+//Definindo Num Max de Pokémons
 const numPokes = 1025;
 
+
+//Carregando as Informções antes de Criar o Card
 const fecthPoke = async() => {
-    for(let i = 1; i <= numPokes; i++){
-        await getPoke(i);
+    const chunkSize = 100;
+    for (let i = 1; i <= numPokes; i += chunkSize) {
+        const promises = [];
+        for (let j = i; j < i + chunkSize && j <= numPokes; j++) {
+            promises.push(getPoke(j));
+        }
+        const results = await Promise.all(promises);
+        results.forEach(result => {
+            if (result) {
+                const { infoPoke, infoSpecie, arrayEvo } = result;
+                cardPoke(infoPoke, infoSpecie, arrayEvo);
+            }
+        });
     }
 };
 
+
+//Procurando as Informações na API
 const getPoke = async(id) => {
     try {
         const urlPoke = `https://pokeapi.co/api/v2/pokemon/${id}`;
@@ -76,10 +90,11 @@ const getPoke = async(id) => {
             }
         }
 
-        cardPoke(infoPoke, infoSpecie, arrayEvo);
+        return { infoPoke, infoSpecie, arrayEvo };
 
     } catch (error) {
         console.error(error);
+        return null;
     }
 };
 
@@ -404,6 +419,19 @@ const cardPoke = (poke, specie, arrayEvolution) => {
             infoType.appendChild(infoTypeIcon);
             infoTypes.appendChild(infoType);
         });
+
+
+        //Trocando Variedade (Card Grande)
+        if(specie.varieties.length > 1){
+            const infoVarieties = specie.varieties;
+            const arrayVarieties = [];
+
+            infoVarieties.forEach((varieRes) => {
+                arrayVarieties.push(varieRes.pokemon.name);
+            });
+
+            console.log(arrayVarieties);
+        };
 
 
         //Trocando Sprite (Card Grande)
