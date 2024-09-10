@@ -265,13 +265,16 @@ const cardPoke = (poke, specie, arrayEvolution) => {
 
         //Criando Tela (Card Grande)
         moreInfos.classList = "moreInfos";
+        const divCloseInfo = document.createElement('div');
         const closeInfo = document.createElement('div');
 
 
         //Botão de Fechar (Card Grande)
+        divCloseInfo.classList = "divCloseInfo";
         closeInfo.classList = "closeInfo";
         closeInfo.textContent = "X";
-        moreInfos.appendChild(closeInfo);
+        divCloseInfo.appendChild(closeInfo);
+        moreInfos.appendChild(divCloseInfo);
 
         closeInfo.addEventListener('click', function() {
             moreInfos.style.visibility = "hidden";
@@ -419,19 +422,6 @@ const cardPoke = (poke, specie, arrayEvolution) => {
             infoType.appendChild(infoTypeIcon);
             infoTypes.appendChild(infoType);
         });
-
-
-        //Trocando Variedade (Card Grande)
-        if(specie.varieties.length > 1){
-            const infoVarieties = specie.varieties;
-            const arrayVarieties = [];
-
-            infoVarieties.forEach((varieRes) => {
-                arrayVarieties.push(varieRes.pokemon.name);
-            });
-
-            console.log(arrayVarieties);
-        };
 
 
         //Trocando Sprite (Card Grande)

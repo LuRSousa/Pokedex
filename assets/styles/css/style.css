@@ -171,7 +171,14 @@ body main .moreInfos {
   z-index: 100;
   background-color: rgba(255, 255, 255, 0.3137254902);
 }
-body main .moreInfos .closeInfo {
+body main .moreInfos .divCloseInfo {
+  width: 50%;
+  min-width: 1000px;
+  height: 60px;
+  display: flex;
+  justify-content: right;
+}
+body main .moreInfos .divCloseInfo .closeInfo {
   font-weight: 600;
   font-size: 1.3rem;
   width: 40px;
@@ -180,9 +187,6 @@ body main .moreInfos .closeInfo {
   display: flex;
   align-items: center;
   justify-content: center;
-  justify-self: flex-end;
-  align-self: flex-end;
-  margin-right: 23.5%;
   background-color: rgb(214, 77, 90);
   color: #e6e9ed;
   cursor: pointer;
@@ -190,7 +194,7 @@ body main .moreInfos .closeInfo {
   font-family: "Pixelify Sans", sans-serif;
   border: 3px solid rgba(0, 0, 0, 0.3);
 }
-body main .moreInfos .closeInfo:hover {
+body main .moreInfos .divCloseInfo .closeInfo:hover {
   transform: rotate(360deg);
   transition: 300ms;
 }
@@ -276,6 +280,18 @@ body main .moreInfos .moreInfo .pokeEverything .pokeInfo .infoPhoto .infoTypes .
   width: 50px;
   height: 50px;
   border-radius: 50%;
+}
+body main .moreInfos .moreInfo .pokeEverything .pokeInfo .infoPhoto .changeVarieties {
+  display: flex;
+  justify-content: space-around;
+  padding: 0.3rem;
+  gap: 1rem;
+  position: absolute;
+  top: 2%;
+  left: 2%;
+  background-color: #e6e9ed;
+  width: 50px;
+  height: 50px;
 }
 body main .moreInfos .moreInfo .pokeEverything .pokeInfo .changeSpriteContainer {
   background-color: rgba(0, 0, 0, 0.3);

@@ -198,28 +198,33 @@ body{
             z-index: 100;
             background-color: #ffffff50;
 
-            .closeInfo{
-                font-weight: 600;
-                font-size: 1.3rem;
-                width: 40px;
-                height: 40px;
-                border-radius: 50%;
+            .divCloseInfo{
+                width: 50%;
+                min-width: 1000px;
+                height: 60px;
                 display: flex;
-                align-items: center;
-                justify-content: center;
-                justify-self: flex-end;
-                align-self: flex-end;
-                margin-right: 23.5%;
-                background-color: rgb(214, 77, 90);
-                color: #e6e9ed;
-                cursor: pointer;
-                transition: 300ms;
-                font-family: "Pixelify Sans", sans-serif;
-                border: 3px solid rgba(0, 0, 0, 0.3);
+                justify-content: right;
 
-                &:hover{
-                    transform: rotate(360deg);
+                .closeInfo{
+                    font-weight: 600;
+                    font-size: 1.3rem;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: rgb(214, 77, 90);
+                    color: #e6e9ed;
+                    cursor: pointer;
                     transition: 300ms;
+                    font-family: "Pixelify Sans", sans-serif;
+                    border: 3px solid rgba(0, 0, 0, 0.3);
+    
+                    &:hover{
+                        transform: rotate(360deg);
+                        transition: 300ms;
+                    }
                 }
             }
 
@@ -310,6 +315,19 @@ body{
                                         }
                                     }                    
                                 }
+                            }
+
+                            .changeVarieties{
+                                display: flex;
+                                justify-content: space-around; 
+                                padding: 0.3rem;
+                                gap: 1rem;
+                                position: absolute;
+                                top: 2%;
+                                left: 2%;
+                                background-color: #e6e9ed;
+                                width: 50px;
+                                height: 50px;
                             }
                         }
                         
