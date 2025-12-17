@@ -1,5 +1,12 @@
 ## Pokédex
-<p>Esse é um projeto pessoal que surgiu com o intuito de relembrar alguns conceitos já aprendidos anteriormente sobre desenvolvimento web e também aproveitar essa oportunidade para aplicar novos conhecimentos aprendidos nesse meio tempo, como uma melhor aplicação de JS em funções e o uso de responsividade por meio de media querys.</p>
+<p>Este projeto é uma Pokédex interativa desenvolvida para consolidar conceitos de manipulação de DOM com JavaScript e design responsivo. O objetivo principal foi colocar em prática o consumo de APIs externas e o uso avançado de Media Queries.</p>
+
+### Tecnologias
+<li> 
+ <ul>JavaScript</ul>
+ <ul>HTML5, CSS3 e SCSS</ul>
+ <ul>PokeAPI</ul>
+</li>
 
 ### *Em desenvolvimento <br> (Ago/24 - )
 
