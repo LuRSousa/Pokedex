@@ -1,13 +1,13 @@
 ## Pokédex
-<p>Este projeto é uma Pokédex interativa desenvolvida para consolidar conceitos de manipulação de DOM com JavaScript e design responsivo. O objetivo principal foi colocar em prática o consumo de APIs externas e o uso avançado de Media Queries.</p>
+Este projeto é uma Pokédex interativa desenvolvida para consolidar conceitos de manipulação de DOM com JavaScript e design responsivo. O objetivo principal foi colocar em prática o consumo de APIs externas e o uso avançado de Media Queries.
 
 ### Tecnologias
-<p>-JavaScript</p>
-<p>-HTML5, CSS3 e SCSS</p>
-<p>-PokeAPI</p>
+- **JavaScript**
+- **HTML5, CSS3 e SCSS**
+- **PokeAPI**
 
-### *Em desenvolvimento <br> (Ago/24 - )
+### Status
+Concluído (Jul/24 - Ago/24)
 
-### Clique no link abaixo para visualizar o projeto: 
-<a href="https://lursousa.github.io/Pokedex/">Pokédex</a>
- 
+### Demonstração
+[Clique aqui para visualizar o projeto online](https://lursousa.github.io/Pokedex/)
